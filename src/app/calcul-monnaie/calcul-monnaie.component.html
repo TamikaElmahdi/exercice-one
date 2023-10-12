@@ -1,0 +1,30 @@
+
+<div>
+  <label for="achat">Prix de l'achat :</label>
+  <input id="achat" type="number" [(ngModel)]="prixAchat" />
+  <button (click)="ajouterAchat(prixAchat)">Ajouter l'achat</button>
+</div>
+
+<div *ngIf="achats.length > 0">
+  <h3>Achats du client :</h3>
+  <ul>
+    <li *ngFor="let achat of achats">{{ achat.prix }}</li>
+  </ul>
+</div>
+
+<div>
+  <!-- <label for="purchaseAmount">Montant des achats :</label>
+  <input id="purchaseAmount" type="number" [(ngModel)]="purchaseAmount" /> -->
+</div>
+<div *ngIf="changeAmount !== undefined">
+  <label for="paidAmount">Montant payé :</label>
+  <input id="paidAmount" type="number" [(ngModel)]="paidAmount" />
+  <button (click)="calculateChange()">Calculer</button>
+
+  <div *ngIf="paidAmount >= purchaseAmount">
+    <p>Somme à rendre :</p>
+    <p *ngIf="tenEuros > 0">{{ tenEuros }} Euros</p>
+    <p *ngIf="fiveEuros > 0">{{ fiveEuros }} Euros</p>
+    <p *ngIf="oneEuro > 0">{{ oneEuro }} Euro</p>
+  </div>
+</div>
